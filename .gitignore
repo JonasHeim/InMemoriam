@@ -1,0 +1,4 @@
+.vscode
+reminders.csv
+.bot_credentials
+*.log

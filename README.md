@@ -28,13 +28,13 @@ The reminder are saved in a local CSV file which is checked by the bot consecuti
 An entry looks like this:\
 ```<unique_id>,<time>,<type>,<message>```\
 E.g.:\
-```1,13.05.2020 12:27,interval,"Buy toilet paper"```\
-```0,14.05.2020 14:00,timestamp,"Birthday Grandpa"```
+```0,13.05.2020 12:27,interval,"Buy toilet paper"```\
+```1,14.05.2020 14:00,timestamp,"Birthday Grandpa"```
 
 The list is sorted ascending using the date and id.
 
 If a reminder was found it will be sent to the user.\
-The user then can discard the last reminder. If the reminder is not discarded within one minute it will be set again according to its type:
+The user then can dismiss the last reminder. If the reminder is not dismiss within one minute it will be set again according to its type:
 * Timestamp: Increment day of reminder. It will be sent again tomorrow.
 * Interval: Reset reminder with same interval.
 
@@ -59,4 +59,5 @@ Current implemented commands:
 | /start | Welcome the user and send a list of current available commands |
 | /help | Response with a list of current available commands |
 | /new | Set a new reminder |
+| /dismiss | Dismiss/delete a reminder |
 | /list | List all reminders for a specific day or within next 24 hours |

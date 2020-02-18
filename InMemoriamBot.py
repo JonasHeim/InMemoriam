@@ -145,6 +145,30 @@ def start(update, context):
 	else:
 		context.bot.sendMessage(chat_id=update.message.chat_id, text="Hi, i am a bot to remind you of things you would else forget.\nTo get a list of my commands please send me  a /help message.")
 
+#unknown command
+def unknown(update, context):
+	context.bot.send_message(chat_id=update.message.chat_id, text="Sorry, i don't know this command :(")
+	help(update, context)
+
+#/help command
+def help(update, context):
+
+	help_text = "Currently supported commands:\r\n\
+		/start\r\nInitial start of the bot\r\n\
+		/add\r\nAdd a new reminder.\r\nThis command supports both interval and timestamp reminder\r\n\
+		To add a new intervall reminder the command needs to be in format\r\n\
+		add <hours|minutes><m|h> <reminder_text>\r\n\
+		To add a new timestamp reminder the command needs to be in format\r\n\
+		add <dd>.<mm>.<yyyy> <reminder_text>\r\n\r\n\
+		/dismiss <id|all>\r\nDismiss either a specific reminder with ID <id> or all reminders.\r\n\r\n\
+		/list\r\nList all currently active reminder."
+
+	#out user details
+	logging.info("Command /help received from user: %s with chat_id: %s - Message %s", str(update.message.from_user.username), update.message.chat_id, update.message.text)
+
+	context.bot.sendMessage(chat_id=update.message.chat_id, text=help_text)
+
+
 #/dismiss command
 def dismiss(update, context):
 
@@ -367,6 +391,12 @@ def main():
 
 		#/add
 		InMemoriamBotDispatcher.add_handler(CommandHandler('add', add))
+
+		#/help
+		InMemoriamBotDispatcher.add_handler(CommandHandler('help', help))
+
+		#unknown command, must be added last!
+		InMemoriamBotDispatcher.add_handler(MessageHandler(Filters.command, unknown))
 	except Exception as exception:
 		log_error(exception)
 		sys.exit(1)

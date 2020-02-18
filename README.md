@@ -57,7 +57,7 @@ Current implemented commands:
 | Command | Description |
 | ------- | ----------- |
 | /start | Welcome the user and send a list of current available commands |
-| /help | Response with a list of current available commands |
-| /new | Set a new reminder |
-| /dismiss | Dismiss/delete a reminder |
-| /list | List all reminders for a specific day or within next 24 hours |
+| /help | Sends an overview of all available commands |
+| /add \<interval>\<m/h> \<message><br>/add \<timestamp> \<message> | Set a new reminder to be fired in the specified time interval from now on. Interval needs to be in format \<hours>h or \<minutes>m<br>Set a new reminder for specific time. Timestamp needs to be in format \<dd>:\<mm>:\<yyyy> \<hh>:\<mm>|
+| /dismiss <id><br>/dismiss all | Dismiss/delete the reminder with ID <id><br>Dismiss/delete all reminder. |
+| /list | List all reminders |
